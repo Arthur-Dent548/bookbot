@@ -1,10 +1,16 @@
+import sys
+
 def get_book_text(filepath):
     with open(filepath) as f:
         file_contents = f.read()
         return file_contents
 
 def main():
-    filepath = "/home/kio/Boot.dev/bookbot/books/frankenstein.txt"
+    #filepath = "/home/kio/Boot.dev/bookbot/books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    filepath = sys.argv[1]
     book_text = get_book_text(filepath)
     output = create_dicts_for_letters(count_letters_in_book(book_text))
     print("============ BOOKBOT ============")
